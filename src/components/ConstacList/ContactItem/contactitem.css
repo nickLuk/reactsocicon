@@ -26,4 +26,20 @@
     width: 100px;
     margin-left: 1.5%;
   }
+.star{
+  position: absolute;
+  left: 170%;
+  top:17%;
+  color:grey;
 
+}
+.starIns{
+  position: absolute;
+  left: 170%;
+  top:17%;
+  color:orange;
+
+}
+.star:hover{
+  transform: rotate(50deg);
+}
