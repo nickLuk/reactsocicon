@@ -14,7 +14,7 @@ class ContactItem extends React.Component {
     iconemail: this.props.iconemail,
     btnStatus: false,
     borderStatus: false,
-    starStatus: this.props.favorite
+   starStatus: this.props.favorite
   };
   RandomAva = () => {
     const newAvatar = Math.floor(Math.random() * 100);
@@ -34,12 +34,11 @@ class ContactItem extends React.Component {
       borderStatus: false
     });
   };
-  StarInsert = () => {
+ /* StarInsert = () => {
     this.setState({
       starStatus: !this.state.starStatus
     });
-  };
-
+  };*/
   render() {
     const {
       avatar,
@@ -51,7 +50,7 @@ class ContactItem extends React.Component {
       iconlinkedin,
       iconskype,
       iconemail,
-      favorite
+      
     } = this.state;
     let url = `https://randomuser.me/api/portraits/${gender}/${avatar}.jpg`;
     let btnStyle = "btn btn-outline-primary true col-2 offset-4";
@@ -59,15 +58,16 @@ class ContactItem extends React.Component {
       btnStyle = "btn btn-outline-danger true col-2 offset-4";
     }
 
-    let borderStyle = "panel-body p-t-10";
+    let borderStyle = "panel-body";
     if (this.state.borderStatus) {
-      borderStyle = "panel-body p-t-10 border";
+      borderStyle = "panel-bodyHover";
     }
 
     let starStyle = "star";
-    if (this.state.starStatus) {
+    if (this.props.favorite) {
       starStyle = "starIns";
     }
+    
 
     return (
       <div className="row d-flex justify-content-center">
@@ -177,7 +177,7 @@ class ContactItem extends React.Component {
                     </a>
                   </li>
                   <li>
-                    <div className={starStyle} onClick={this.StarInsert}>
+                    <div className=/*{this.props.favorite}*/ {starStyle} onClick={this.props.addFavorite}>
                       <i className="fa fa-star"></i>
                     </div>
                   </li>

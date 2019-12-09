@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import "./contactlist.css";
 import ContactItem from "./ContactItem/ContactItem";
 
-const ContactList = ({ ContactList, onDelete }) => {
+const ContactList = ({ ContactList, onDelete, addFavorite }) => {
   const listItem = ContactList.map(item => {
     return (
       <ContactItem
@@ -18,6 +18,7 @@ const ContactList = ({ ContactList, onDelete }) => {
         iconemail={item.iconemail}
         favorite={item.favorite}
         onDelete={() => onDelete(item.id)}
+        addFavorite={() => addFavorite(item.id)}
       ></ContactItem>
     );
   });

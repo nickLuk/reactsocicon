@@ -21,7 +21,7 @@ import './index.css';
                     iconlinkedin: "https://www.linkedin.com/",
                     iconskype: "https://www.skype.com/uk/",
                     iconemail:"https://www.google.com/intl/uk/gmail/about/",
-                    favorite: false
+                    favorite:  false
                 },
                 {
                     id:2,
@@ -30,11 +30,11 @@ import './index.css';
                     avatar: 35,
                     gender: "men",
                     iconfacebook:"https://uk-ua.facebook.com/arnold",
-                    icontwitter: "https://ru-ru.facebook.com/JohnChristopherOfficial/",
+                    icontwitter: "https://twitter.com/schwarzenegger?lang=ru",
                     iconlinkedin: "https://www.linkedin.com/",
                     iconskype: "https://www.skype.com/uk/",
                     iconemail:"https://www.google.com/intl/uk/gmail/about/",
-                    favorite: true
+                    favorite:  false
                 },
                 {
                     id:3,
@@ -43,11 +43,11 @@ import './index.css';
                     avatar: 10,
                     gender: "men",
                     iconfacebook:"https://www.facebook.com/SylvesterStallone/",
-                    icontwitter: "https://ru-ru.facebook.com/JohnChristopherOfficial/",
+                    icontwitter: "https://twitter.com/theslystallone",
                     iconlinkedin: "https://www.linkedin.com/",
                     iconskype: "https://www.skype.com/uk/",
                     iconemail:"https://www.google.com/intl/uk/gmail/about/",
-                    favorite: false
+                    favorite:  false
                 },
                 {
                     id:4,
@@ -60,7 +60,7 @@ import './index.css';
                     iconlinkedin: "https://www.linkedin.com/",
                     iconskype: "https://www.skype.com/uk/",
                     iconemail:"https://www.google.com/intl/uk/gmail/about/",
-                    favorite: true
+                    favorite:  false
                 },
                 {
                     id:5,
@@ -100,12 +100,31 @@ this.setState(() =>{
         
        
     };
+      
+     
+    addFavorite=(id) =>{
+        this.setState(() =>{
+       const index = this.state.List.findIndex(elem => elem.id === id);
+         
+      
+       const newListfav=this.state.List.slice();
+               
+        newListfav[index].favorite=!newListfav[index].favorite;      
+                   
+        return{
+               
+           newListfav
+                };
+                });
+
+    };
 
     render (){
+       
         return(
         <div className="container bootstrap snippet">
             <Search></Search>
-            <ContactList ContactList={this.state.List} onDelete={this.onDelete}></ContactList>
+            <ContactList ContactList={this.state.List} onDelete={this.onDelete} addFavorite={this.addFavorite}></ContactList>
             
         </div>
     );
@@ -115,4 +134,3 @@ this.setState(() =>{
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
