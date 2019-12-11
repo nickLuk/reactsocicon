@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import "./contactlist.css";
 import ContactItem from "./ContactItem/ContactItem";
+import Search from "../SearchComponent/search";
 
 const ContactList = ({ ContactList, onDelete, addFavorite }) => {
   const listItem = ContactList.map(item => {
@@ -24,6 +25,7 @@ const ContactList = ({ ContactList, onDelete, addFavorite }) => {
   });
   return (
     <Fragment>
+      <Search></Search>
       <h2 className="col-7 d-flex justify-content-center">ContactList</h2>
       {listItem}
     </Fragment>

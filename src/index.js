@@ -2,7 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Search  from "./components/SearchComponent/search";
 import ContactList from "./components/ConstacList/ContactList";
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import About from "./components/About/About";
+import AddContact from "./components/AddContact/AddContact";
+import NotFound from "./components/NotFound/NotFound";
+import Edit from "./components/Edit/Edit";
+import MainMenu from "./components/MainMenu/MainMenu";
 import './index.css';
 
 
@@ -120,17 +125,36 @@ this.setState(() =>{
     };
 
     render (){
-       
         return(
-        <div className="container bootstrap snippet">
-            <Search></Search>
-            <ContactList ContactList={this.state.List} onDelete={this.onDelete} addFavorite={this.addFavorite}></ContactList>
-            
-        </div>
+            <Router>
+<div className="container bootstrap snippet">
+
+<MainMenu></MainMenu>
+<Switch>
+<Route
+path="/"
+exact
+component={() => (
+<ContactList
+ContactList={this.state.List}
+onDelete={this.onDelete}
+addFavorite={this.addFavorite}
+/>
+)}
+></Route>
+<Route path="/about" exact component={About}>
+    
+</Route>
+<Route path="/add" exact component={AddContact}></Route>
+<Route path="/edit" exact component={Edit}></Route>
+<Route path="*" exact component={NotFound}></Route>
+</Switch>
+</div>
+</Router>
     );
 }
 }
     
-
+/*<ContactList ContactList={this.state.List} onDelete={this.onDelete} addFavorite={this.addFavorite}></ContactList>*/
 
 ReactDOM.render(<App />, document.getElementById('root'));
