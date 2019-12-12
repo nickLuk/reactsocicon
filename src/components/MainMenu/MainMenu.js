@@ -6,7 +6,7 @@ const MainMenu = () =>{
         <div className="row">
             <div className="col">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <ul className="w-100">
+                    <ul className="w-100 menu">
                         <li className="naw-item active">
                             <Link to="/">Home</Link>
                         </li>
